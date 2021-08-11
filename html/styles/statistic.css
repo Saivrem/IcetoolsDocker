@@ -1,0 +1,21 @@
+.navbtn {
+    width: 125.05px;
+    height: 54px;
+    margin: 3px;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -171px;
+}
+
+.btn {
+    margin-bottom: 3px;
+}
+.form {
+left:50%;
+margin-left: 320px;
+}

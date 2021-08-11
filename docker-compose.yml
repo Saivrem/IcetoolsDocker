@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  web-server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    network_mode: bridge
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - mysql-server
+      - java
+    volumes:
+      - "./html/:/var/www/html"
+    ports:
+      - "81:80"
+  mysql-server:
+    image: mysql:8.0.19
+    network_mode: bridge
+    restart: always
+    ports:
+      - "3307:3306"
+    env_file:
+      - .env
+    command: --init-file /data/application/init.sql
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/data/application/init.sql
+
+  java:
+    build:
+      dockerfile: java/Dockerfile
+      context: .
+    env_file:
+      - .env
+    network_mode: bridge
+    restart: always
+    depends_on:
+      - mysql-server
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql-data:
