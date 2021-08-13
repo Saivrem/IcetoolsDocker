@@ -28,7 +28,6 @@ class Helper
     }
 
 
-
     /**
      * @param int $available
      * @return string
@@ -134,7 +133,10 @@ class Helper
             CURLOPT_POSTFIELDS => "{
                                         \"userName\":\"" . $_ENV["ICECAT_SHOP_USER"] . "\" ,
                                         \"passWord\":\"" . $_ENV["ICECAT_SHOP_PASSWORD"] . "\"
-                                   }"
+                                   }",
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            )
         ));
         $response = curl_exec($curl);
 

@@ -10,12 +10,14 @@ services:
     depends_on:
       - mysql-server
       - java
+    links:
+      - java
     volumes:
       - "./html/:/var/www/html"
     ports:
       - "81:80"
   mysql-server:
-    image: mysql:8.0.19
+    image: mysql:latest
     restart: always
     ports:
       - "3307:3306"
@@ -36,6 +38,8 @@ services:
       - mysql-server
     ports:
       - "8080:8080"
+    links:
+      - mysql-server
 
 volumes:
   mysql-data:
