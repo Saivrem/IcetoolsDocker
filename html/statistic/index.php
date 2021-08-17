@@ -2,7 +2,7 @@
 include($_SERVER['DOCUMENT_ROOT'] . "/php/Helper.php");
 $direction = $_GET['direction'] === null ? 'asc' : $_GET['direction'];
 $field = $_GET['field'] === null ? 'available' : $_GET['field'];
-$result = Helper::sortData(Helper::prepareFlagField(Helper::getRequest("http://" . $_ENV["PHP_DOCKER_IP"] . ":" . $_ENV["JAVA_REST_PORT"] . "/api/v1/statistic/")), $field, $direction);
+$result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic()), $field, $direction);
 ?>
 <!DOCTYPE html>
 <html lang="EN">

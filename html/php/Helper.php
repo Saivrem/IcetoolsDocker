@@ -6,10 +6,10 @@ class Helper
 
     public function __construct()
     {
-        $this->config = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "config.ini");
+        $this->config = require 'config.php';
     }
 
-    function getSortingIcon($column, $direction, $field): string
+    static function getSortingIcon($column, $direction, $field): string
     {
         if ($column != $field) {
             return '<a href="?field=' . $column . '&direction=asc">';
@@ -19,6 +19,11 @@ class Helper
         } else {
             return '<a href="?field=' . $column . '&direction=asc">  &#9660; ';
         }
+    }
+
+    public function getStatistic(): array
+    {
+        return Helper::getRequest("http://" . $this->config["PHP_DOCKER_IP"] . ":" . $this->config["JAVA_REST_PORT"] . "/api/v1/statistic/");
     }
 
     /**
