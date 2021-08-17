@@ -1,7 +1,6 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . "/php/Helper.php");
-
-$languages = Helper::languages();
+$languages = (new Helper())->languages();
 uasort($languages, function ($a, $b) {
     return strcmp($a['langName'], $b['langName']);
 });

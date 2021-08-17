@@ -2,7 +2,14 @@
 
 class Helper
 {
-    static function getSortingIcon($column, $direction, $field): string
+    private $config = null;
+
+    public function __construct()
+    {
+        $this->config = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "config.ini");
+    }
+
+    function getSortingIcon($column, $direction, $field): string
     {
         if ($column != $field) {
             return '<a href="?field=' . $column . '&direction=asc">';
@@ -102,27 +109,27 @@ class Helper
                 </footer>';
     }
 
-    public static function languages(): array
+    public function languages(): array
     {
 
-        $link = "http://" . $_ENV["PHP_DOCKER_IP"] . ":" . $_ENV["JAVA_REST_PORT"] . "/api/v1/language/";
+        $link = "http://" . $this->config["PHP_DOCKER_IP"] . ":" . $this->config["JAVA_REST_PORT"] . "/api/v1/language/";
         $languages = Helper::getRequest($link);
 
         if (count($languages) === 0) {
-            if (self::init()) {
-                $languages = self::languages();
+            if ($this->init()) {
+                $languages = $this->languages();
             }
         }
         return $languages;
     }
 
-    public static function init(): bool
+    public function init(): bool
     {
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://" . $_ENV["PHP_DOCKER_IP"] . ":" . $_ENV["JAVA_REST_PORT"] . "/api/v1/language/init",
+            CURLOPT_URL => "http://" . $this->config["PHP_DOCKER_IP"] . ":" . $this->config["JAVA_REST_PORT"] . "/api/v1/language/init",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -131,8 +138,8 @@ class Helper
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => "{
-                                        \"userName\":\"" . $_ENV["ICECAT_SHOP_USER"] . "\" ,
-                                        \"passWord\":\"" . $_ENV["ICECAT_SHOP_PASSWORD"] . "\"
+                                        \"userName\":\"" . $this->config["ICECAT_SHOP_USER"] . "\" ,
+                                        \"passWord\":\"" . $this->config["ICECAT_SHOP_PASSWORD"] . "\"
                                    }",
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json'
