@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/php/Helper.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/icetoolsContent/php/Helper.php");
 $direction = $_GET['direction'] === null ? 'asc' : $_GET['direction'];
 $field = $_GET['field'] === null ? 'available' : $_GET['field'];
 $result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic()), $field, $direction);
@@ -8,8 +8,8 @@ $result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic
 <html lang="EN">
 <head>
     <title>Dashboard</title>
-    <link rel='stylesheet' type='text/css' href='/styles/statistic.css'>
-    <link rel='shortcut icon' href='/mediaAssets/favicon.ico' type='image/x-icon'>
+    <link rel='stylesheet' type='text/css' href='/icetoolsContent/styles/statistic.css'>
+    <link rel='shortcut icon' href='/icetoolsContent/mediaAssets/favicon.ico' type='image/x-icon'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
           crossorigin="anonymous">
@@ -17,10 +17,10 @@ $result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-info text-center">
     <a class="navbar-brand" style="margin: 5px;" href="https://icecat.biz">
-        <img src="/mediaAssets/home.png" width="50px" height="50px" alt="home.png">
+        <img src="/icetoolsContent/mediaAssets/home.png" width="50px" height="50px" alt="home.png">
     </a>
     <form class="form-inline">
-        <button class="navbtn btn btn-light" type="button" onclick="top.location.href='../'">Launchpad</button>
+        <button class="navbtn btn btn-light" type="button" onclick="top.location.href='https://icecat.biz'">Launchpad</button>
     </form>
 </nav>
 <div class="container">
@@ -55,7 +55,7 @@ $result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic
                     <td class="align-middle"><?= $value['repository'] ?></td>
                     <td class="align-middle"><?= $value['type'] ?></td>
                     <td class="align-middle"><img
-                                src="/mediaAssets/<?= Helper::printIcon($value['available']) ?>"
+                                src="/icetoolsContent/mediaAssets/<?= Helper::printIcon($value['available']) ?>"
                                 width="25" height="25" alt=""></td>
                     <td class="align-middle"><?= $value['lastModified'] ?></td>
                 </tr>

@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/php/Helper.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/icetoolsContent/php/Helper.php");
 $languages = (new Helper())->languages();
 uasort($languages, function ($a, $b) {
     return strcmp($a['langName'], $b['langName']);
@@ -36,7 +36,7 @@ $inputElements = [
     <meta charset='UTF-8'>
 
     <!-- Stylesheets -->
-    <link rel='stylesheet' type='text/css' href='styles/index.css'>
+    <link rel='stylesheet' type='text/css' href='/icetoolsContent/styles/index.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
           crossorigin="anonymous">
@@ -49,8 +49,8 @@ $inputElements = [
             crossorigin="anonymous"></script>
 
     <!-- External script files -->
-    <script src="js/json-viewer.js"></script>
-    <script src='js/logic.js'></script>
+    <script src="/icetoolsContent/js/json-viewer.js"></script>
+    <script src='/icetoolsContent/js/logic.js'></script>
 
 </head>
 
@@ -59,7 +59,7 @@ $inputElements = [
 <!-- Nav Bar -->
 <nav class='navbar navbar-expand-lg navbar-light bg-info text-center'>
     <div class="col">
-        <a class="navbar-brand" href="https://icecat.biz"><img src="mediaAssets/home.png" width="50px" height="50px"
+        <a class="navbar-brand" href="https://icecat.biz"><img src="/icetoolsContent/mediaAssets/home.png" width="50px" height="50px"
                                                                alt="home.png"></a>
     </div>
     <div class="col">
