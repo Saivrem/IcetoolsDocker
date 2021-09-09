@@ -20,7 +20,7 @@ $result = Helper::sortData(Helper::prepareFlagField((new Helper())->getStatistic
         <img src="/icetoolsContent/mediaAssets/home.png" width="50px" height="50px" alt="home.png">
     </a>
     <form class="form-inline">
-        <button class="navbtn btn btn-light" type="button" onclick="top.location.href='https://icecat.biz'">Launchpad</button>
+        <button class="navbtn btn btn-light" type="button" onclick="top.location.href='../'">Launchpad</button>
     </form>
 </nav>
 <div class="container">
